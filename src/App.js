@@ -11,6 +11,11 @@ function App() {
   const [object, setObject] = useState([])
   const [input, setInput] = useState("")
 
+  function handleNewObject(object) {
+    console.log(object)
+      setObject(object)
+  }
+
   async function handleClick() {
     setObject(array)
   }
@@ -24,7 +29,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <FilterBar handleClick={handleClick} handleChange={handleChange}></FilterBar>
-      <Input></Input>
+      <Input handleNewObject={handleNewObject}></Input>
       <ObjectList object={object}></ObjectList>
     </div>
   );
