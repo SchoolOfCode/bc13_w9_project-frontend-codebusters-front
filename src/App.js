@@ -3,8 +3,10 @@ import { FilterBar } from './components/FilterBar/FilterBar.js'
 import { Header } from './components/Header/Header.js'
 import { Input } from './components/Input/Input.js'
 import { ObjectList } from './components/ObjectList/ObjectList.js'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import array from './dummydata';
+
+let url = "http://localhost:3000/api/englishDefinitions"
 
 function App() {
 
@@ -12,11 +14,23 @@ function App() {
   const [input, setInput] = useState("")
   const [isVisible, setVisible] = useState()
 
-  // function handleNewObject(newObject) {
-  //   console.log(newObject)
-  //   const objectToAdd = [...object, newObject]
-  //   setObject(objectToAdd)
-  // }
+  async function getAllObjects() {
+    const allObjects = await fetch("http://localhost:3000/api/englishDefinitions")
+    let data = await allObjects.json()
+    return data
+    // setObject(data)
+    // console.log(data)
+  }
+
+  // useEffect(() => {
+  //   async function getAllObjects() {
+  //     const allObjects = await fetch("http://localhost:3000/api/englishDefinitions")
+  //     let data = await allObjects.json()
+  //     setObject(data)
+  //     // console.log(data)
+  //   }
+  //   getAllObjects()
+  // }, []);
 
   async function handleNewObject(newObject) {
     const objectToAdd = await fetch("url", {
@@ -24,22 +38,11 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObject)
     })
-    const data = await objectToAdd.json()
-    console.log(data)
+    const objectToAddOnScreen = [...object, newObject]
+    setObject(objectToAddOnScreen)
+    // const data = await objectToAdd.json()
+    // console.log(data)
   }
-
-  // function handleDelete(id) {
-  //   console.log("hi")
-  //   for (let i = 0; i < object.length; i++) {
-  //     if (object[i].id === id) {
-  //       const deleted = [...object.slice(0, i), ...object.slice(i + 1)];
-  //       console.log(deleted)
-  //       setObject(deleted);
-  //     }
-  //   } return
-  // }
-
- 
 
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
@@ -47,8 +50,10 @@ function App() {
         const objectToDelete = await fetch(`url${id}`, {
           method: "DELETE"
         })
-        const data = await objectToDelete.json()
-        console.log(data)
+        const deleted = [...object.slice(0, i), ...object.slice(i + 1)];
+        setObject(deleted);
+        // const data = await objectToDelete.json()
+        // console.log(data)
       } 
     } return
   }
@@ -58,7 +63,10 @@ function App() {
   };
 
   async function handleClick() {
-    setObject(array)
+    // setObject(array)
+    const objects = await getAllObjects();
+    console.log(objects)
+    setObject(objects)
   }
 
   function handleChange(e) {
