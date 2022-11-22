@@ -1,13 +1,14 @@
 import React from 'react'
 
-export function ObjectItem() {
+export function ObjectItem(props) {
+    console.log("items", props)
     return (
         <div>
-            <h3>title</h3>
-            <p>definition</p>
-            <img alt="examples"></img>
-            <a href="#links">Links</a>
-            <p>weeks</p>
+            <h3>{props.title}</h3>
+            <p>{props.definition}</p>
+            <img alt="examples" src={props.example}></img>
+            <a href={props.links}>{props.links}</a>
+            <p>{props.week}</p>
         </div>
     )
 }

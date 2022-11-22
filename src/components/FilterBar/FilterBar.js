@@ -1,11 +1,11 @@
 import React from 'react'
 
-export function FilterBar() {
+export function FilterBar(props) {
     return (
         <div>
-            <input placeholder="enter search here."></input>
+            <input onChange={props.handleChange} placeholder="enter search here."></input>
             <button>Search</button>
-            <button>Get All</button>
+            <button onClick={props.handleClick}>Get All</button>
         </div>
     )
 }
