@@ -11,9 +11,43 @@ function App() {
   const [object, setObject] = useState([])
   const [input, setInput] = useState("")
 
-  function handleNewObject(object) {
-    console.log(object)
-      setObject(object)
+  // function handleNewObject(newObject) {
+  //   console.log(newObject)
+  //   const objectToAdd = [...object, newObject]
+  //   setObject(objectToAdd)
+  // }
+
+  async function handleNewObject(newObject) {
+    const objectToAdd = await fetch("url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newObject)
+    })
+    const data = await objectToAdd.json()
+    console.log(data)
+  }
+
+  // function handleDelete(id) {
+  //   console.log("hi")
+  //   for (let i = 0; i < object.length; i++) {
+  //     if (object[i].id === id) {
+  //       const deleted = [...object.slice(0, i), ...object.slice(i + 1)];
+  //       console.log(deleted)
+  //       setObject(deleted);
+  //     }
+  //   } return
+  // }
+
+  async function handleDelete(id) {
+    for (let i = 0; i < object.length; i++) {
+      if (object[i].id === id) {
+        const objectToDelete = await fetch(`url${id}`, {
+          method: "DELETE"
+        })
+        const data = await objectToDelete.json()
+        console.log(data)
+      } 
+    } return
   }
 
   async function handleClick() {
@@ -24,13 +58,12 @@ function App() {
     setInput(e.target.value)
   }
 
-
   return (
     <div className="App">
       <Header></Header>
       <FilterBar handleClick={handleClick} handleChange={handleChange}></FilterBar>
       <Input handleNewObject={handleNewObject}></Input>
-      <ObjectList object={object}></ObjectList>
+      <ObjectList object={object} handleDelete={handleDelete}></ObjectList>
     </div>
   );
 }

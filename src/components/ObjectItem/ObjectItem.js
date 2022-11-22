@@ -8,6 +8,7 @@ export function ObjectItem(props) {
             <img alt="examples" src={props.example}></img>
             <a href={props.links}>{props.links}</a>
             <p>{props.week}</p>
+            <button onClick={props.handleDelete}>Delete</button>
         </div>
     )
 }

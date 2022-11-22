@@ -5,7 +5,7 @@ export function ObjectList(props) {
     return (
         <div>
             {props.object.map((item) => {
-                return (<ObjectItem key={item.id} title={item.title} definition={item.definition} example={item.example} links={item.links} week={item.week} />)
+                return (<ObjectItem key={item.id} title={item.title} definition={item.definition} example={item.example} links={item.links} week={item.week} handleDelete={() => props.handleDelete(item.id)} />)
             })}
         </div>
     )

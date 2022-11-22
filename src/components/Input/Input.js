@@ -1,7 +1,7 @@
 import React from 'react'
-import {useState} from 'react'
+import { useState } from 'react'
 
-export function Input (props) {
+export function Input(props) {
 
     const [title, setTitle] = useState()
     const [definition, setDefinition] = useState()
@@ -9,13 +9,14 @@ export function Input (props) {
     const [links, setLinks] = useState()
     const [week, setWeek] = useState()
 
-    function createObject(){
+    function createObject() {
         props.handleNewObject({
-        title: title,
-        definition: definition,
-        example: example,
-        links: links,
-        week: week})
+            title: title,
+            definition: definition,
+            example: example,
+            links: links,
+            week: week
+        })
     }
 
     function handleTitle(e) {
@@ -41,7 +42,7 @@ export function Input (props) {
             <input placeholder="example" onChange={handleExample}></input>
             <input placeholder="links" onChange={handleLinks}></input>
             <input placeholder="week" onChange={handleWeek}></input>
-            <button onClick={createObject}></button>
+            <button onClick={createObject}> Add</button>
         </div>
     )
 }
