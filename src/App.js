@@ -34,7 +34,9 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObject)
     })
-    const objectToAddOnScreen = [...object, objectToAdd]
+    let data = await objectToAdd.json()
+    let brandNewObject = data.payload[0]
+    const objectToAddOnScreen = [...object, brandNewObject]
     setObject(objectToAddOnScreen)
     // const data = await objectToAdd.json()
     // console.log(data)
@@ -56,17 +58,20 @@ function App() {
   }
 
   async function handleEdit(id) {
-    handleVisibility()
+    console.log("edit", editObject)
+    handleVisibilityEdit()
     for (let i = 0; i < object.length; i++){
-      if (object[i].id === id){
-        // const objectToEdit = await fetch(`${url}/api/englishDefinitions/${id}`, {
-        //   method: 'PATCH',
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify()
-        // })
-
+      if (object[i].id === id) {
+        const objectToEdit = await fetch(`${url}/api/englishDefinitions/${id}`, {
+          method: 'PATCH',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(editObject)
+        })
+        let data = await objectToEdit.json();
+        let brandNewObject = data.payload[0]
+        const edited = [...object.slice(0, i), brandNewObject, ...object.slice(i + 1)];
+        setObject(edited);
       }
-
     }
   }
 
