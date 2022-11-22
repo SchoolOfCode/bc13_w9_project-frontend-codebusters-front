@@ -6,7 +6,7 @@ import { ObjectList } from './components/ObjectList/ObjectList.js'
 import { useState, useEffect } from 'react'
 import array from './dummydata';
 
-let url = "http://localhost:3000/api/englishDefinitions"
+let url = "http://localhost:3001"
 
 function App() {
 
@@ -17,10 +17,13 @@ function App() {
   async function getAllObjects() {
     const allObjects = await fetch("http://localhost:3001/api/englishDefinitions")
     let data = await allObjects.json()
-
     return data.payload
-    // setObject(data)
-    // console.log(data)
+  }
+
+  async function getByTitle() {
+    const titleObject = await fetch(`${url}/api/englishDefinitions/${input}`)
+    let data = await titleObject.json()
+    return data.payload
   }
 
   // useEffect(() => {
@@ -68,9 +71,13 @@ function App() {
   };
 
   async function handleClick() {
-    // setObject(array)
-    const objects = await getAllObjects()
-     setObject(objects)
+    if (!input){
+      const objects = await getAllObjects()
+      setObject(objects)
+    } else{
+      const titleObject = await getByTitle()
+      setObject(titleObject)
+    }
         
   }
 

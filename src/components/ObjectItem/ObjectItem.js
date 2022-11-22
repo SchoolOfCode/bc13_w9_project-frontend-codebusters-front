@@ -1,8 +1,9 @@
 import React from 'react'
+import './ObjectItem.css'
 
 export function ObjectItem(props) {
     return (
-        <div>
+        <div className="item-container">
             <h3>{props.title}</h3>
             <p>{props.definition}</p>
             <img alt="examples" src={props.example}></img>
