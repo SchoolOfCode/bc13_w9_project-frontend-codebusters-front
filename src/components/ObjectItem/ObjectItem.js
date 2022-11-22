@@ -10,6 +10,7 @@ export function ObjectItem(props) {
             <a href={props.links}>{props.links}</a>
             <p>{props.week}</p>
             <button onClick={props.handleDelete}>Delete</button>
+            <button onClick={props.handleEdit}>Edit</button>
         </div>
     )
 }

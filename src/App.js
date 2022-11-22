@@ -13,6 +13,8 @@ function App() {
   const [object, setObject] = useState([])
   const [input, setInput] = useState("")
   const [isVisible, setVisible] = useState()
+  const [isEditVisible, setEditVisible] = useState()
+  const [editObject, setEditObject] = useState()
 
   async function getAllObjects() {
     const allObjects = await fetch("http://localhost:3001/api/englishDefinitions")
@@ -32,7 +34,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObject)
     })
-    const objectToAddOnScreen = [...object, newObject]
+    const objectToAddOnScreen = [...object, objectToAdd]
     setObject(objectToAddOnScreen)
     // const data = await objectToAdd.json()
     // console.log(data)
@@ -53,8 +55,31 @@ function App() {
     } return
   }
 
+  async function handleEdit(id) {
+    handleVisibility()
+    for (let i = 0; i < object.length; i++){
+      if (object[i].id === id){
+        // const objectToEdit = await fetch(`${url}/api/englishDefinitions/${id}`, {
+        //   method: 'PATCH',
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify()
+        // })
+
+      }
+
+    }
+  }
+
+  function handleObjectState(object) {
+    setEditObject(object)
+  }
+
   const handleVisibility = event => {
     setVisible(current => !current);
+  };
+
+  const handleVisibilityEdit = event => {
+    setEditVisible(current => !current);
   };
 
   async function handleClick() {
@@ -82,9 +107,12 @@ function App() {
       <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
       </div>
+      <div className="form-container" style={{ visibility: isEditVisible ? 'visible' : 'hidden' }}>
+        <Input visibility={handleVisibilityEdit} handleNewObject={handleObjectState}></Input>
+      </div>
       <div className="main-container">
         <button onClick={handleVisibility}>Add New Object</button>
-        <ObjectList object={object} handleDelete={handleDelete}></ObjectList>
+        <ObjectList object={object} handleDelete={handleDelete} handleEdit={handleEdit} handleVisibility={handleVisibilityEdit}></ObjectList>
       </div>
     </div>
   );

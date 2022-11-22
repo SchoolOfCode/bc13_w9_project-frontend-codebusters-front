@@ -34,7 +34,19 @@ export function Input(props) {
         setLinks(e.target.value)
     }
     function handleWeek(e) {
-        setWeek(e.target.value)
+        const value = e.target.value
+        if (Validate(value)){
+            setWeek(value)
+        }else{
+            alert('week must be a number')
+        }
+    }
+
+    function Validate(value) {
+        if(value.match(/^[0-9]*$/)){
+            return true
+        }
+        return false
     }
 
     return (
@@ -43,7 +55,7 @@ export function Input(props) {
             <input placeholder="definition" onChange={handleDefinition}></input>
             <input placeholder="example" onChange={handleExample}></input>
             <input placeholder="links" onChange={handleLinks}></input>
-            <input placeholder="week" onChange={handleWeek}></input>
+            <input default="888" placeholder="week" onChange={handleWeek}></input>
             <button onClick={createObject}>Add</button>
         </div>
     )
