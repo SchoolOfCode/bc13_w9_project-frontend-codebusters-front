@@ -10,6 +10,7 @@ function App() {
 
   const [object, setObject] = useState([])
   const [input, setInput] = useState("")
+  const [isVisible, setVisible] = useState()
 
   // function handleNewObject(newObject) {
   //   console.log(newObject)
@@ -38,6 +39,8 @@ function App() {
   //   } return
   // }
 
+ 
+
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
       if (object[i].id === id) {
@@ -50,6 +53,10 @@ function App() {
     } return
   }
 
+  const handleVisibility = event => {
+    setVisible(current => !current);
+  };
+
   async function handleClick() {
     setObject(array)
   }
@@ -60,10 +67,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
-      <FilterBar handleClick={handleClick} handleChange={handleChange}></FilterBar>
-      <Input handleNewObject={handleNewObject}></Input>
+      <div className="main-container">
+        <Header></Header>
+        <FilterBar handleClick={handleClick} handleChange={handleChange}></FilterBar>
+      </div>
+      <div className="form-container" style={{visibility: isVisible ? 'visible' : 'hidden'}}>
+        <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
+      </div>
+      <div className="main-container">
+      <button onClick={handleVisibility}>Add New Object</button>
       <ObjectList object={object} handleDelete={handleDelete}></ObjectList>
+      </div>
     </div>
   );
 }

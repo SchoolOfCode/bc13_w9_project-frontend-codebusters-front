@@ -1,4 +1,5 @@
 import React from 'react'
+import './Input.css'
 import { useState } from 'react'
 
 export function Input(props) {
@@ -17,6 +18,7 @@ export function Input(props) {
             links: links,
             week: week
         })
+        props.visibility() 
     }
 
     function handleTitle(e) {
@@ -36,13 +38,13 @@ export function Input(props) {
     }
 
     return (
-        <div>
+        <div className="form-items">
             <input placeholder="title" onChange={handleTitle}></input>
             <input placeholder="definition" onChange={handleDefinition}></input>
             <input placeholder="example" onChange={handleExample}></input>
             <input placeholder="links" onChange={handleLinks}></input>
             <input placeholder="week" onChange={handleWeek}></input>
-            <button onClick={createObject}> Add</button>
+            <button onClick={createObject}>Add</button>
         </div>
     )
 }
