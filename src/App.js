@@ -26,18 +26,8 @@ function App() {
     return data.payload
   }
 
-  // useEffect(() => {
-  //   async function getAllObjects() {
-  //     const allObjects = await fetch("http://localhost:3000/api/englishDefinitions")
-  //     let data = await allObjects.json()
-  //     setObject(data)
-  //     // console.log(data)
-  //   }
-  //   getAllObjects()
-  // }, []);
-
   async function handleNewObject(newObject) {
-    const objectToAdd = await fetch("url", {
+    const objectToAdd = await fetch("http://localhost:3001/api/englishDefinitions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObject)
@@ -48,21 +38,18 @@ function App() {
     // console.log(data)
   }
 
-  useEffect(() => {
-    
-  }, [object])
 
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
       if (object[i].id === id) {
-        const objectToDelete = await fetch(`url${id}`, {
+        const objectToDelete = await fetch(`${url}/api/englishDefinitions/${id}`, {
           method: "DELETE"
         })
         const deleted = [...object.slice(0, i), ...object.slice(i + 1)];
         setObject(deleted);
         // const data = await objectToDelete.json()
         // console.log(data)
-      } 
+      }
     } return
   }
 
@@ -71,14 +58,14 @@ function App() {
   };
 
   async function handleClick() {
-    if (!input){
+    if (!input) {
       const objects = await getAllObjects()
       setObject(objects)
-    } else{
+    } else {
       const titleObject = await getByTitle()
       setObject(titleObject)
     }
-        
+
   }
 
 
@@ -92,12 +79,12 @@ function App() {
         <Header></Header>
         <FilterBar handleClick={handleClick} handleChange={handleChange}></FilterBar>
       </div>
-      <div className="form-container" style={{visibility: isVisible ? 'visible' : 'hidden'}}>
+      <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
       </div>
       <div className="main-container">
-      <button onClick={handleVisibility}>Add New Object</button>
-      <ObjectList object={object} handleDelete={handleDelete}></ObjectList>
+        <button onClick={handleVisibility}>Add New Object</button>
+        <ObjectList object={object} handleDelete={handleDelete}></ObjectList>
       </div>
     </div>
   );
