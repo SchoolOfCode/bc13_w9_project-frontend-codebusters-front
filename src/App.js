@@ -1,25 +1,24 @@
 import './App.css';
-import {FilterBar} from './components/FilterBar/FilterBar.js'
-import {Header} from './components/Header/Header.js'
-import {Input} from './components/Input/Input.js'
-import {ObjectList} from './components/ObjectList/ObjectList.js'
-import {useState} from 'react'
+import { FilterBar } from './components/FilterBar/FilterBar.js'
+import { Header } from './components/Header/Header.js'
+import { Input } from './components/Input/Input.js'
+import { ObjectList } from './components/ObjectList/ObjectList.js'
+import { useState } from 'react'
 import array from './dummydata';
 
 function App() {
 
-const [object, setObject] = useState([])
-const [input, setInput] = useState("")
-console.log(object)
+  const [object, setObject] = useState([])
+  const [input, setInput] = useState("")
 
-async function handleClick() {
-  setObject(array)
-}
-  
-function handleChange(e) {
-  setInput(e.target.value)
-}
-  
+  async function handleClick() {
+    setObject(array)
+  }
+
+  function handleChange(e) {
+    setInput(e.target.value)
+  }
+
 
   return (
     <div className="App">

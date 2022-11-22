@@ -1,7 +1,6 @@
 import React from 'react'
 
 export function ObjectItem(props) {
-    console.log("items", props)
     return (
         <div>
             <h3>{props.title}</h3>
