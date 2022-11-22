@@ -15,9 +15,10 @@ function App() {
   const [isVisible, setVisible] = useState()
 
   async function getAllObjects() {
-    const allObjects = await fetch("http://localhost:3000/api/englishDefinitions")
+    const allObjects = await fetch("http://localhost:3001/api/englishDefinitions")
     let data = await allObjects.json()
-    return data
+
+    return data.payload
     // setObject(data)
     // console.log(data)
   }
@@ -44,6 +45,10 @@ function App() {
     // console.log(data)
   }
 
+  useEffect(() => {
+    
+  }, [object])
+
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
       if (object[i].id === id) {
@@ -64,10 +69,11 @@ function App() {
 
   async function handleClick() {
     // setObject(array)
-    const objects = await getAllObjects();
-    console.log(objects)
-    setObject(objects)
+    const objects = await getAllObjects()
+     setObject(objects)
+        
   }
+
 
   function handleChange(e) {
     setInput(e.target.value)

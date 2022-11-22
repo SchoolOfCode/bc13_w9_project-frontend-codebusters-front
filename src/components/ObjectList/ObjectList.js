@@ -2,7 +2,7 @@ import React from 'react'
 import { ObjectItem } from '../ObjectItem/ObjectItem.js'
 
 export function ObjectList(props) {
-    console.log(props)
+   // console.log(props)
     return (
         <div>
             {props.object.map((item) => {
