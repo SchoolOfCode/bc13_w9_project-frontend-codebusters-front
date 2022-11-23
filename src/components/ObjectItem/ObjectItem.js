@@ -4,7 +4,7 @@ import './ObjectItem.css'
 export function ObjectItem(props) {
     return (
         <div className="item-container">
-            <h3>{props.title}</h3>
+            <div style={{display: "flex"}}><h2 style={{marginRight: "50px"}}>{props.title}</h2><h2>{props.englishTitle}</h2></div>
             <p>{props.definition}</p>
             <img alt="examples" src={props.example}></img>
             <a href={props.links}>{props.links}</a>

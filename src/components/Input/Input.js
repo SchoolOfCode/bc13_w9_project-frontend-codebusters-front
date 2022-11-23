@@ -51,6 +51,7 @@ export function Input(props) {
 
     return (
         <div className="form-items">
+            <button onClick={props.visibility}>X</button>
             <input placeholder="title" onChange={handleTitle}></input>
             <input placeholder="definition" onChange={handleDefinition}></input>
             <input placeholder="example" onChange={handleExample}></input>

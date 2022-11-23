@@ -6,6 +6,8 @@ import { ObjectList } from './components/ObjectList/ObjectList.js'
 import { useState } from 'react'
 import array from './dummydata';
 
+
+
 let url = "http://localhost:3001"
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
   const [arrayFile, setArrayFile] = useState([])
   // State for languages
   const [language, setLanguage] = useState('englishDefinitions')
+  // foreign handleChange filterBar
+  const [translateSearch, setTranslateSearch] = useState()
 
   console.log(language)
 
@@ -124,6 +128,18 @@ function App() {
       const titleObject = await getByTitle()
       setObject(titleObject)
     }
+  }
+
+  async function handleTranslation() {
+    console.log("foreign")
+    //translateSearch
+    if (!translateSearch) {
+      const objects = await getAllObjects()
+      setObject(objects)
+    }else {
+      const titleObject = await getByTitle()
+      setObject(titleObject)
+    }
 
   }
 
@@ -131,19 +147,21 @@ function App() {
     setInput(e.target.value)
   }
 
+  function handleTranslateSearch(e) {
+    setTranslateSearch(e.target.value)
+  }
+
   function sortByWeek() {
     let sortedObjects = [...object].sort(function(a,b){return a.week - b.week})
-    // console.log(sortedObjects)
     setObject(sortedObjects)
   }
 
   function favourite(id) {
     const editFavourite = object.filter(field => { return field.id === id})
-    console.log(editFavourite[0])
+
     const newArray = [...arrayFile, editFavourite[0]]
     setArrayFile(newArray)
-    //array.push(editFavourite[0])
-    //[arrayFile, setArrayFile]
+ 
   }
 
   function displayFavourite() {
@@ -170,7 +188,7 @@ function App() {
     <div className="App">
       <div className="main-container">
         <Header handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
-        <FilterBar handleClick={handleClick} handleChange={handleChange} handleSort={sortByWeek} displayFave={displayFavourite}></FilterBar>
+        <FilterBar foreignClick={handleTranslation} language={language} handleClick={handleClick} handleTranslate={handleTranslateSearch} handleChange={handleChange} handleSort={sortByWeek} displayFave={displayFavourite}></FilterBar>
       </div>
       <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
