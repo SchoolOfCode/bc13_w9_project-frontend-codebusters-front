@@ -1,11 +1,42 @@
-.searchButton, .getAllButton, .sortByWeekButton, .favouriteButton{
-    width: 50px;
-    height: 25px;
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.searchButton, .getAllButton, .sortByWeekButton, .favouriteButton, .translatorButton{
     background-color: var(--lightColor);
     border: 1px solid var(--darkColor);
     border-radius: 5px;
     color: var(--darkColor);
-    font-size: 1rem;
+    font-size: 75%;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+
+.input{
+    width: 75vw;
+    height: 3vh;
+    background-color: white;
+    border: 1px solid var(--darkColor);
+    border-radius: 5px;
+    color: var(--darkColor);
+    font-size: 100%;
     font-weight: bold;
     margin: 10px;
+}
+
+.languageDiv{
+    display:flex;
+    justify-content:space-between;
+    justify-content: center;
+    padding: 10px;
+}
+
+.translatorButtonDiv{
+    display: flex;
+    justify-content: center;
 }

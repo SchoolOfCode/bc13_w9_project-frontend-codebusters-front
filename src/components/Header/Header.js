@@ -18,8 +18,15 @@ export function Header (props) {
         </div>
 
         <div className="headerTitle">
+
+        <div className="titleDiv">
             <h1 className="title">School of Code </h1> 
+        </div>
+
+        <div className="h2Div">
             <h2 className="h2title"> Across the Globe</h2>
+        </div>
+        
         </div>
     
         </div>
