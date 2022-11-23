@@ -4,11 +4,10 @@ import { Header } from './components/Header/Header.js'
 import { Input } from './components/Input/Input.js'
 import { ObjectList } from './components/ObjectList/ObjectList.js'
 import { useState } from 'react'
-import array from './dummydata';
-
 
 
 let url = "http://localhost:3001"
+
 
 function App() {
 
@@ -29,7 +28,7 @@ function App() {
   // foreign handleChange filterBar
   const [translateSearch, setTranslateSearch] = useState()
 
-  console.log(language)
+
 
   async function getAllObjects() {
     const allObjects = await fetch(`http://localhost:3001/api/${language}`)
@@ -53,21 +52,19 @@ function App() {
     let brandNewObject = data.payload[0]
     const objectToAddOnScreen = [...object, brandNewObject]
     setObject(objectToAddOnScreen)
-    // const data = await objectToAdd.json()
-    // console.log(data)
+  
   }
 
 
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
       if (object[i].id === id) {
-        const objectToDelete = await fetch(`${url}/api/${language}/${id}`, {
+        await fetch(`${url}/api/${language}/${id}`, {
           method: "DELETE"
         })
         const deleted = [...object.slice(0, i), ...object.slice(i + 1)];
         setObject(deleted);
-        // const data = await objectToDelete.json()
-        // console.log(data)
+//const objectToDelete = 
       }
     } return
   }
@@ -88,26 +85,49 @@ function App() {
 
   function createEditObject(original, newEdit) {
 
-    if(newEdit.title){  
-      original[0].title = newEdit.title
-    }
-    if(newEdit.definition){
-      original[0].definition = newEdit.definition
-    }
-    if(newEdit.example){
-      original[0].example = newEdit.example
-    }
-    if(newEdit.links){
-      original[0].links = newEdit.links
-    }
-    if(newEdit.week){
-      original[0].week = newEdit.week
+    if (language === 'englishDefinitions'){
+
+      if(newEdit.title){  
+        original[0].title = newEdit.title
+      }
+      if(newEdit.definition){
+        original[0].definition = newEdit.definition
+      }
+      if(newEdit.example){
+        original[0].example = newEdit.example
+      }
+      if(newEdit.links){
+        original[0].links = newEdit.links
+      }
+      if(newEdit.week){
+        original[0].week = newEdit.week
+      }
+    }else{
+
+      if(newEdit.englishtitle){
+        original[0].englishtitle = newEdit.englishtitle
+      }
+      if(newEdit.title){  
+        original[0].title = newEdit.title
+      }
+      if(newEdit.definition){
+        original[0].definition = newEdit.definition
+      }
+      if(newEdit.example){
+        original[0].example = newEdit.example
+      }
+      if(newEdit.links){
+        original[0].links = newEdit.links
+      }
+      if(newEdit.week){
+        original[0].week = newEdit.week
+      }
     }
     return original
   }
 
   function handleObjectState(object) {
-   // console.log(object)
+
     setEditObject(object)
     handleVisibilityEdit()
   }
@@ -132,7 +152,7 @@ function App() {
 
   async function handleTranslation() {
     console.log(translateSearch)
-    //translateSearch
+
     if (!translateSearch) {
       const objects = await getAllObjects()
       setObject(objects)
@@ -205,11 +225,11 @@ function App() {
       </div>
 
       <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
-        <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
+        <Input visibility={handleVisibility} handleNewObject={handleNewObject} language={language}></Input>
       </div>
 
       <div className="form-container" style={{ visibility: isEditVisible ? 'visible' : 'hidden' }}>
-        <Input visibility={handleVisibilityEdit} handleNewObject={handleEdit}></Input>
+        <Input visibility={handleVisibilityEdit} handleNewObject={handleEdit} language={language}></Input>
       </div>
 
       <div className="main-container">
@@ -223,6 +243,8 @@ function App() {
   }
 export default App;
 
-
+/* <div className="form-container" style={{ visibility: isForeignVisible ? 'visible' : 'hidden' }}>
+        <Input visibility={handleVisibilityForeign} handleNewObject={handleNewObject}></Input>
+      </div> */
 
 // <ObjectList object={object} handleDelete={handleDelete} handleEdit={handleEdit} handleVisibility={handleVisibilityEdit}></ObjectList>
