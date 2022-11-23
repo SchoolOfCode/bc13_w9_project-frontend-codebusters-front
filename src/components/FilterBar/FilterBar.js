@@ -7,6 +7,7 @@ export function FilterBar(props) {
             <button onClick={props.handleClick}>Search</button>
             <button onClick={props.handleClick}>Get All</button>
             <button onClick={props.handleSort}>Sort by week</button>
+            <button onClick={props.displayFave}>Show favourites</button>
         </div>
     )
 }

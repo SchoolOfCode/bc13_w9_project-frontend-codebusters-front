@@ -3,7 +3,7 @@ import { FilterBar } from './components/FilterBar/FilterBar.js'
 import { Header } from './components/Header/Header.js'
 import { Input } from './components/Input/Input.js'
 import { ObjectList } from './components/ObjectList/ObjectList.js'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import array from './dummydata';
 
 let url = "http://localhost:3001"
@@ -21,22 +21,26 @@ function App() {
   // Id of the object to be edited
   const [editObject, setEditObject] = useState()
   // Array file.
-  const [arrayFile, setArrayFile] = useState(array)
+  const [arrayFile, setArrayFile] = useState([])
+  // State for languages
+  const [language, setLanguage] = useState('englishDefinitions')
+
+  console.log(language)
 
   async function getAllObjects() {
-    const allObjects = await fetch("http://localhost:3001/api/englishDefinitions")
+    const allObjects = await fetch(`http://localhost:3001/api/${language}`)
     let data = await allObjects.json()
     return data.payload
   }
 
   async function getByTitle() {
-    const titleObject = await fetch(`${url}/api/englishDefinitions/${input}`)
+    const titleObject = await fetch(`${url}/api/${language}/${input}`)
     let data = await titleObject.json()
     return data.payload
   }
 
   async function handleNewObject(newObject) {
-    const objectToAdd = await fetch("http://localhost:3001/api/englishDefinitions", {
+    const objectToAdd = await fetch(`http://localhost:3001/api/${language}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObject)
@@ -53,7 +57,7 @@ function App() {
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
       if (object[i].id === id) {
-        const objectToDelete = await fetch(`${url}/api/englishDefinitions/${id}`, {
+        const objectToDelete = await fetch(`${url}/api/${language}/${id}`, {
           method: "DELETE"
         })
         const deleted = [...object.slice(0, i), ...object.slice(i + 1)];
@@ -70,7 +74,7 @@ function App() {
     
     const editedItem = createEditObject(editField, changes)
     
-      await fetch(`${url}/api/englishDefinitions/${editObject}`, {
+      await fetch(`${url}/api/${language}/${editObject}`, {
        method: 'PATCH',
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify(editedItem[0])
@@ -134,23 +138,39 @@ function App() {
   }
 
   function favourite(id) {
-    
     const editFavourite = object.filter(field => { return field.id === id})
     console.log(editFavourite[0])
-    console.log(arrayFile)
     const newArray = [...arrayFile, editFavourite[0]]
-    console.log(newArray)
     setArrayFile(newArray)
-    array.push(editFavourite[0])
     //array.push(editFavourite[0])
     //[arrayFile, setArrayFile]
+  }
+
+  function displayFavourite() {
+    setObject(arrayFile)
+  }
+
+  function handleClickSpanish() {
+    setLanguage('spanishDefinitions')
+  }
+
+  function handleClickFrench() {
+    setLanguage('frenchDefinitions')
+  }
+
+  function handleClickGerman() {
+    setLanguage('germanDefinitions')
+  }
+
+  function handleClickEnglish() {
+    setLanguage('englishDefinitions')
   }
 
   return (
     <div className="App">
       <div className="main-container">
-        <Header></Header>
-        <FilterBar handleClick={handleClick} handleChange={handleChange} handleSort={sortByWeek}></FilterBar>
+        <Header handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
+        <FilterBar handleClick={handleClick} handleChange={handleChange} handleSort={sortByWeek} displayFave={displayFavourite}></FilterBar>
       </div>
       <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
