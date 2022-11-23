@@ -198,19 +198,28 @@ function App() {
   return (
     <div className="App">
       <div className="main-container">
-        <Header handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
-        <FilterBar foreignClick={handleTranslation} language={language} handleClick={handleClick} handleTranslate={handleTranslateSearch} handleChange={handleChange} handleSort={sortByWeek} displayFave={displayFavourite}></FilterBar>
+        <div className="languages">
+          <Header handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
+        </div>
+
+        <div className="search-bar"> 
+          <FilterBar foreignClick={handleTranslation} language={language} handleClick={handleClick} handleTranslate={handleTranslateSearch} handleChange={handleChange} handleSort={sortByWeek} displayFave={displayFavourite}></FilterBar>
+        </div>
       </div>
+
       <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
       </div>
+
       <div className="form-container" style={{ visibility: isEditVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibilityEdit} handleNewObject={handleEdit}></Input>
       </div>
+
       <div className="main-container">
         <button onClick={handleVisibility}>Add New Object</button>
         <ObjectList object={object} handleFavourite={favourite} handleDelete={handleDelete} handleEdit={handleObjectState}></ObjectList>
       </div>
+      
     </div>
   );
 }

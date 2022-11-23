@@ -1,0 +1,36 @@
+
+.imageDiv{
+    display:flex;
+    justify-content:center;
+}
+
+.image{
+    width: 25%;
+    height: 25%;
+
+}
+
+.headerButtons{
+    display:flex;
+    justify-content:space-between;
+    justify-content: center;
+    padding: 10px;
+}
+
+.headerButtons button{
+    width: 100px;
+    height: 50px;
+    background-color: var(--lightColor);
+    border: 1px solid var(--darkColor);
+    border-radius: 5px;
+    color: var(--darkColor);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.headerTitle{
+    display:flex;
+    justify-content:center;
+    padding: 10px;
+}
