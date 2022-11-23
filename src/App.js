@@ -20,6 +20,8 @@ function App() {
   const [isEditVisible, setEditVisible] = useState()
   // Id of the object to be edited
   const [editObject, setEditObject] = useState()
+  // Array file.
+  const [arrayFile, setArrayFile] = useState(array)
 
   async function getAllObjects() {
     const allObjects = await fetch("http://localhost:3001/api/englishDefinitions")
@@ -97,7 +99,7 @@ function App() {
   }
 
   function handleObjectState(object) {
-    console.log(object)
+   // console.log(object)
     setEditObject(object)
     handleVisibilityEdit()
   }
@@ -132,7 +134,16 @@ function App() {
   }
 
   function favourite(id) {
-    const editField = object.filter(field => { return field.id === editObject})
+    
+    const editFavourite = object.filter(field => { return field.id === id})
+    console.log(editFavourite[0])
+    console.log(arrayFile)
+    const newArray = [...arrayFile, editFavourite[0]]
+    console.log(newArray)
+    setArrayFile(newArray)
+    
+    //array.push(editFavourite[0])
+    //[arrayFile, setArrayFile]
   }
 
   return (
@@ -149,7 +160,7 @@ function App() {
       </div>
       <div className="main-container">
         <button onClick={handleVisibility}>Add New Object</button>
-        <ObjectList object={object} handleDelete={handleDelete} handleEdit={handleObjectState}></ObjectList>
+        <ObjectList object={object} handleFavourite={favourite} handleDelete={handleDelete} handleEdit={handleObjectState}></ObjectList>
       </div>
     </div>
   );

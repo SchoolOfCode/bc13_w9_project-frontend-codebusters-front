@@ -11,6 +11,7 @@ export function ObjectItem(props) {
             <p>{props.week}</p>
             <button onClick={props.handleDelete}>Delete</button>
             <button onClick={props.handleEdit}>Edit</button>
+            <button onClick={props.handleFavourite}>Favourite</button>
         </div>
     )
 }
