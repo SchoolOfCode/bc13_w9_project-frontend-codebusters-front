@@ -143,16 +143,13 @@ function App() {
   }
 
   async function getByForeignTitle() {
+   
       const titleObject = await fetch(`${url}/api/${language}/english/${translateSearch}`)
+    
       let data = await titleObject.json()
       return data.payload
   }
 
-  // async function getByTitle() {
-  //   const titleObject = await fetch(`${url}/api/${language}/${input}`)
-  //   let data = await titleObject.json()
-  //   return data.payload
-  // }
 
   function handleChange(e) {
     setInput(e.target.value)
