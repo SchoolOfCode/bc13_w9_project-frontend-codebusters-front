@@ -3,6 +3,7 @@ import { FilterBar } from './components/FilterBar/FilterBar.js'
 import { Header } from './components/Header/Header.js'
 import { Input } from './components/Input/Input.js'
 import { ObjectList } from './components/ObjectList/ObjectList.js'
+import { StartPage } from './components/StartPage/StartPage.js'
 import { useState } from 'react'
 
 
@@ -19,6 +20,8 @@ function App() {
   const [isVisible, setVisible] = useState()
   // Visibility for the 'edit object' form
   const [isEditVisible, setEditVisible] = useState()
+   // Start page visibility: 
+   const [isStartPageVisible, setIsStartPageVisible] = useState(true)
   // Id of the object to be edited
   const [editObject, setEditObject] = useState()
   // Array file.
@@ -27,6 +30,7 @@ function App() {
   const [language, setLanguage] = useState('englishDefinitions')
   // foreign handleChange filterBar
   const [translateSearch, setTranslateSearch] = useState()
+ 
 
 
 
@@ -54,7 +58,6 @@ function App() {
     setObject(objectToAddOnScreen)
   
   }
-
 
   async function handleDelete(id) {
     for (let i = 0; i < object.length; i++) {
@@ -198,22 +201,40 @@ function App() {
 
   function handleClickSpanish() {
     setLanguage('spanishDefinitions')
+    changeStartState()
   }
 
   function handleClickFrench() {
     setLanguage('frenchDefinitions')
+    changeStartState()
   }
 
   function handleClickGerman() {
     setLanguage('germanDefinitions')
+    changeStartState()
   }
 
   function handleClickEnglish() {
     setLanguage('englishDefinitions')
+    changeStartState()
   }
+
+  const changeStartState = event => {
+    if (isStartPageVisible){
+      setIsStartPageVisible(current => !current);
+    }  
+  };
+
+
+
+  
 
   return (
     <div className="App">
+      <div className="form-container" style={{ visibility: isStartPageVisible ? 'visible' : 'hidden' }}>
+        <StartPage changeSpanish={handleClickSpanish} changeEnglish={handleClickEnglish} changeGerman={handleClickGerman} changeFrench={handleClickFrench}></StartPage>
+      </div>
+
       <div className="main-container">
         <div className="languages">
           <Header handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
