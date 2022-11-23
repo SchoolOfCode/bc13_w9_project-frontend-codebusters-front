@@ -34,3 +34,16 @@
     justify-content:center;
     padding: 10px;
 }
+
+.title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--lightColor);
+}
+
+.h2title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--lightColor);
+}
+

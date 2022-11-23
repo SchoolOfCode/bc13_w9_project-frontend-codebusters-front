@@ -6,13 +6,17 @@
   --lightColor: #C2E7DA;
 }
 
+:root {
+  background-color: var(--darkColor);
+  color: var(--lightColor);
+}
+
 
 .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--darkColor);
 }
 
 .form-container {
@@ -20,7 +24,7 @@
   margin: 5px auto 200px 600px;
   width: 500px;
   height: 600px;
-  background-color: rgb(145, 140, 140);
+  background-color: var(--darkColor);
   border: 5px solid blue;
   display: flex;
   justify-content: center;

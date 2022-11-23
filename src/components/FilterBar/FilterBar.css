@@ -1,0 +1,11 @@
+.searchButton, .getAllButton, .sortByWeekButton, .favouriteButton{
+    width: 50px;
+    height: 25px;
+    background-color: var(--lightColor);
+    border: 1px solid var(--darkColor);
+    border-radius: 5px;
+    color: var(--darkColor);
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px;
+}
