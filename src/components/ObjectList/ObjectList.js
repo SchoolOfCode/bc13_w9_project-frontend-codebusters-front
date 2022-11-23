@@ -3,7 +3,7 @@ import './ObjectList.css'
 import { ObjectItem } from '../ObjectItem/ObjectItem.js'
 
 export function ObjectList(props) {
-   // console.log(props)
+   console.log("object list", props)
     return (
         <div className="object-list-container">
             {props.object.map((item) => {

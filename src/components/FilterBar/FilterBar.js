@@ -6,6 +6,7 @@ export function FilterBar(props) {
             <input onChange={props.handleChange} placeholder="enter search here."></input>
             <button onClick={props.handleClick}>Search</button>
             <button onClick={props.handleClick}>Get All</button>
+            <button onClick={props.handleSort}>Sort by week</button>
         </div>
     )
 }

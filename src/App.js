@@ -68,28 +68,11 @@ function App() {
     
     const editedItem = createEditObject(editField, changes)
     
-    const objectToEdit = await fetch(`${url}/api/englishDefinitions/${editObject}`, {
+      await fetch(`${url}/api/englishDefinitions/${editObject}`, {
        method: 'PATCH',
        headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editedItem[0])
+       body: JSON.stringify(editedItem[0])
     })
-
-    let data = await objectToEdit.json();
-
-    let brandNewObject = data.payload[0]
-
-
-    // for (let i = 0; i < object.length; i++){
-    //   if (object[i].id === editObject){
-
-    //     let data = await objectToEdit.json();
-    //     console.log(data)
-    //     let brandNewObject = data.payload[0]
-    //     const edited = [...object.slice(0, i), brandNewObject, ...object.slice(i + 1)];
-    //     setObject(edited);
-    //   }
-    // }
-      
   }
   
 
@@ -138,16 +121,25 @@ function App() {
 
   }
 
-
   function handleChange(e) {
     setInput(e.target.value)
+  }
+
+  function sortByWeek() {
+    let sortedObjects = [...object].sort(function(a,b){return a.week - b.week})
+    // console.log(sortedObjects)
+    setObject(sortedObjects)
+  }
+
+  function favourite(id) {
+    const editField = object.filter(field => { return field.id === editObject})
   }
 
   return (
     <div className="App">
       <div className="main-container">
         <Header></Header>
-        <FilterBar handleClick={handleClick} handleChange={handleChange}></FilterBar>
+        <FilterBar handleClick={handleClick} handleChange={handleChange} handleSort={sortByWeek}></FilterBar>
       </div>
       <div className="form-container" style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
         <Input visibility={handleVisibility} handleNewObject={handleNewObject}></Input>
