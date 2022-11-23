@@ -141,7 +141,7 @@ function App() {
     const newArray = [...arrayFile, editFavourite[0]]
     console.log(newArray)
     setArrayFile(newArray)
-    
+    array.push(editFavourite[0])
     //array.push(editFavourite[0])
     //[arrayFile, setArrayFile]
   }
