@@ -131,17 +131,28 @@ function App() {
   }
 
   async function handleTranslation() {
-    console.log("foreign")
+    console.log(translateSearch)
     //translateSearch
     if (!translateSearch) {
       const objects = await getAllObjects()
       setObject(objects)
     }else {
-      const titleObject = await getByTitle()
+      const titleObject = await getByForeignTitle()
       setObject(titleObject)
     }
-
   }
+
+  async function getByForeignTitle() {
+      const titleObject = await fetch(`${url}/api/${language}/english/${translateSearch}`)
+      let data = await titleObject.json()
+      return data.payload
+  }
+
+  // async function getByTitle() {
+  //   const titleObject = await fetch(`${url}/api/${language}/${input}`)
+  //   let data = await titleObject.json()
+  //   return data.payload
+  // }
 
   function handleChange(e) {
     setInput(e.target.value)
