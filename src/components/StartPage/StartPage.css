@@ -37,7 +37,7 @@
 }
 
 .langButtonEnglish{
-    background-image: url(/Users/lulumchugh/Week 9 - Project Week/FrontEnd/bc13_w9_project-frontend-codebusters-front/flagImages/British flag.png);
+    background-image: url(../../../flagImages/British\ flag.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -47,7 +47,7 @@
 }
 
 .langButtonSpanish{
-    background-image: url(/Users/lulumchugh/Week 9 - Project Week/FrontEnd/bc13_w9_project-frontend-codebusters-front/flagImages/Spanish flag.png);
+    background-image: url(../../../flagImages/Spanish\ flag.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -57,7 +57,7 @@
 }
 
 .langButtonFrench{
-    background-image: url(/Users/lulumchugh/Week 9 - Project Week/FrontEnd/bc13_w9_project-frontend-codebusters-front/flagImages/French flag.png);
+    background-image: url(../../../flagImages/French\ flag.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -67,7 +67,7 @@
 }
 
 .langButtonGerman{
-    background-image: url(/Users/lulumchugh/Week 9 - Project Week/FrontEnd/bc13_w9_project-frontend-codebusters-front/flagImages/German flag.png);
+    background-image: url(../../../flagImages/German\ flag.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
