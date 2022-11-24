@@ -68,26 +68,45 @@ export function Input(props) {
     if (props.language === 'englishDefinitions'){
         return (
             <div className="form-items">
-                <button onClick={props.visibility}>X</button>
-                <input placeholder="title" onChange={handleTitle}></input>
-                <input placeholder="definition" onChange={handleDefinition}></input>
-                <input placeholder="example" onChange={handleExample}></input>
-                <input placeholder="links" onChange={handleLinks}></input>
-                <input default="888" placeholder="week" onChange={handleWeek}></input>
-                <button onClick={createObject}>Add</button>
+
+            <div className="exitButtonDiv">
+                <button className="exitButton" onClick={props.visibility}>X</button>
+            </div>
+                <input placeholder="Title" onChange={handleTitle}></input>
+                
+                <input placeholder="Definition" onChange={handleDefinition}></input>
+                
+                <input placeholder="Example" onChange={handleExample}></input>
+                
+                <input placeholder="Links" onChange={handleLinks}></input>
+               
+                <input default="888" placeholder="Week" onChange={handleWeek}></input>
+               
+                <button className="addButton" onClick={createObject}>Add</button>
+            
             </div>
         )
     }else{
         return (
             <div className="form-items">
-                <button onClick={props.visibility}>X</button>
-                <input placeholder="title in english" onChange={handleEnglishTitle}></input>
-                <input placeholder="title" onChange={handleTitle}></input>           
-                <input placeholder="definition" onChange={handleDefinition}></input>
-                <input placeholder="example" onChange={handleExample}></input>
-                <input placeholder="links" onChange={handleLinks}></input>
-                <input default="888" placeholder="week" onChange={handleWeek}></input>
-                <button onClick={createObject}>Add</button>
+
+            <div className="exitButtonDiv">
+                <button className="exitButton"onClick={props.visibility}>X</button>
+            </div>
+
+                <input placeholder="Title in english" onChange={handleEnglishTitle}></input>
+                
+                <input placeholder="Title" onChange={handleTitle}></input>           
+                
+                <input placeholder="Definition" onChange={handleDefinition}></input>
+                
+                <input placeholder="Example" onChange={handleExample}></input>
+                
+                <input placeholder="Links" onChange={handleLinks}></input>
+                
+                <input default="888" placeholder="Week" onChange={handleWeek}></input>
+                
+                <button className="addButton" onClick={createObject}>Add</button>
             </div>
         )
     }

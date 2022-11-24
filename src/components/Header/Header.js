@@ -6,28 +6,24 @@ export function Header (props) {
     return (
         <div className="headerDiv">
 
-        <div className="imageDiv">
-            <img className="image" src = {logo} alt="logo"></img>
-        </div>
+            <div className="headerButtons">
+                <button className="englishButton" onClick={props.handleEnglish}>English</button>
+                <button className="spanishButton" onClick={props.handleSpanish}>Spanish</button>
+                <button className="frenchButton" onClick={props.handleFrench}>French</button>
+                <button className="germanButton" onClick={props.handleGerman}>German</button>
+            </div>
 
-        <div className="headerButtons">
-            <button onClick={props.handleEnglish}>English</button>
-            <button onClick={props.handleSpanish}>Spanish</button>
-            <button onClick={props.handleFrench}>French</button>
-            <button onClick={props.handleGerman}>German</button>
-        </div>
+            <div className="imageDiv">
+                <img className="image" src = {logo} alt="logo"></img>
+            </div>
 
-        <div className="headerTitle">
+            <div className="headerTitle">
 
-        <div className="titleDiv">
-            <h1 className="title">School of Code </h1> 
-        </div>
+                <div className="titleDiv">
+                    <h1 className="title">  School of Code{"\n"}Across the Globe</h1> 
+                </div>
 
-        <div className="h2Div">
-            <h2 className="h2title"> Across the Globe</h2>
-        </div>
-        
-        </div>
+            </div>
     
         </div>
     )
