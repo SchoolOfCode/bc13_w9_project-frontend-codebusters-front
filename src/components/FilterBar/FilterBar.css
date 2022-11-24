@@ -20,6 +20,10 @@
     margin-top: 30px;
     margin-bottom: 30px;
 }
+.searchButton:hover, .getAllButton:hover, .sortByWeekButton:hover, .favouriteButton:hover, .translatorButton:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 
 .input{
     width: 75vw;

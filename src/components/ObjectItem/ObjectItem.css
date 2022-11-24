@@ -74,6 +74,11 @@ img {
     margin-top: auto;
 }
 
+.buttons:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
 .highlighted-fave {
     width: 8em;
     height: 2em;
