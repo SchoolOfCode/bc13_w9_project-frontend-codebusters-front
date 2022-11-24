@@ -84,7 +84,7 @@ describe('testing language buttons', () => {
   })
 })
 
-describe('empty spec', () => {
+describe('counts list elements', () => {
   it('passes', () => {
 
     cy.visit(url)
@@ -93,6 +93,8 @@ describe('empty spec', () => {
 
     cy.get('.getAllButton').click();
 
-    cy.get('object-list-container')
+    cy.get('.object-list-container > .list-container').should('have.length', 1)
   })
 })
+
+// cy.get('#tweets-list > li').should('have.length', 3)
