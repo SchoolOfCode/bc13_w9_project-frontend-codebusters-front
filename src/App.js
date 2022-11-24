@@ -231,7 +231,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="form-container" style={{ visibility: isStartPageVisible ? 'visible' : 'hidden' }}>
+      <div className="start-page" style={{ visibility: isStartPageVisible ? 'visible' : 'hidden' }}>
         <StartPage changeSpanish={handleClickSpanish} changeEnglish={handleClickEnglish} changeGerman={handleClickGerman} changeFrench={handleClickFrench}></StartPage>
       </div>
 

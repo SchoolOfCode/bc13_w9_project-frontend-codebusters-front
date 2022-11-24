@@ -8,7 +8,7 @@ export function StartPage (props) {
         <div className="imageDivs">
 
         
-      <img src={logos} alt="logo"/>
+      <img className ="animation-logo" src={logos} alt="logo"/>
         
         </div>
             <h3 className="chooseYourLanguage">Choose Your Language</h3>
