@@ -10,11 +10,11 @@ export function StartPage (props) {
             {/* <source src={logo} type='video/mp4; codecs="avc1.4d002a, mp4a.40.2"'/>  */}
             {/* <source src="../../logo.mp4" type="video/mp4"/> */}
             <video width="750" height="500" controls >
-      <source src="../../../Who are you gonna call.gif" type="gif"/>
+      <source src="../../../Who are you gonna call.gif" type="video/mp4"/>
 </video>
 
         {/* </video> */}
-                {/* <img className="images" src = {logo} alt="logo"></img> */}
+                {/* <img className="images" src ="../../../Who are you gonna call.gif" alt="logo"></img> */}
             </div>
             <h3 className="chooseYourLanguage">Choose Your Language</h3>
 
