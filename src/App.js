@@ -146,25 +146,32 @@ function App() {
   async function handleClick() {
     if (!input) {
       const objects = await getAllObjects()
-      setObject(objects)
+      const sortedObjects = objects.sort((a, b) =>
+      a.title.localeCompare(b.title));
+      setObject(sortedObjects)
     } else {
       const titleObject = await getByTitle()
       setObject(titleObject)
     }
   }
 
+
+
   async function handleTranslation() {
     console.log(translateSearch)
 
     if (!translateSearch) {
       const objects = await getAllObjects()
-      setObject(objects)
+      const sortedObjects = objects.sort((a, b) =>
+      a.title.localeCompare(b.title));
+      setObject(sortedObjects)
     }else {
       const titleObject = await getByForeignTitle()
       setObject(titleObject)
     }
   }
 
+  
   async function getByForeignTitle() {
    
       const titleObject = await fetch(`${url}/api/${language}/english/${translateSearch}`)
