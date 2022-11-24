@@ -12,17 +12,18 @@ export function Header (props) {
                 <button className="frenchButton" onClick={props.handleFrench}>French</button>
                 <button className="germanButton" onClick={props.handleGerman}>German</button>
             </div>
-
-            <div className="imageDiv">
-                <img className="image" src = {logo} alt="logo"></img>
-            </div>
-
-            <div className="headerTitle">
-
-                <div className="titleDiv">
-                    <h1 className="title">  School of Code{"\n"}Across the Globe</h1> 
+            <div className="headerDiv">
+                <div className="imageDiv">
+                    <img className="image" src = {logo} alt="logo"></img>
                 </div>
 
+                <div className="headerTitle">
+
+                    <div className="titleDiv">
+                        <h1 className="title">  School of Code{"\n"}Across the Globe</h1> 
+                    </div>
+
+                </div>
             </div>
     
         </div>

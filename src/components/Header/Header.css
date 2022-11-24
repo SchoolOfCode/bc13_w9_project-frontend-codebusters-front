@@ -12,7 +12,7 @@
 
 .headerButtons{
     display:flex;
-    justify-content: right;
+    margin-left: 1200px;
     padding: 10px;
 }
 
@@ -22,9 +22,10 @@
 
 
 .headerTitle{
-    display:flex;
+    /* display:flex;
     justify-content:center;
     justify-content: space-between;
+    align-items: center; */
     padding: 10px;
     white-space: pre;
 }
