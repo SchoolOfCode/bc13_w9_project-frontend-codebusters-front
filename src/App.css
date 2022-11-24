@@ -38,8 +38,8 @@
 
 .form-container {
   position: absolute;
-  top: 0%;
-  left: 0%;
+  top: 25%;
+  left: 25%;
   height: 100%;
   width: 50vw;
   background-color: var(--darkColor);
