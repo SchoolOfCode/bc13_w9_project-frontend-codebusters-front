@@ -36,6 +36,7 @@ function App() {
   const [isActiveFR, setIsActiveFR] = useState(false);
   const [isActiveDE, setIsActiveDE] = useState(false);
  
+  console.log(object)
 
   async function getAllObjects() {
     const allObjects = await fetch(`http://localhost:3001/api/${language}`)
@@ -216,6 +217,7 @@ function App() {
     setIsActive(false)
     setIsActiveDE(false)
     setIsActiveFR(false)
+    setObject([])
   }
 
   function handleClickFrench() {
@@ -225,6 +227,7 @@ function App() {
     setIsActive(false)
     setIsActiveDE(false)
     setIsActiveES(false)
+    setObject([])
   }
 
   function handleClickGerman() {
@@ -234,6 +237,7 @@ function App() {
     setIsActive(false)
     setIsActiveFR(false)
     setIsActiveES(false)
+    setObject([])
   }
 
   function handleClickEnglish() {
@@ -243,6 +247,7 @@ function App() {
     setIsActiveES(false)
     setIsActiveFR(false)
     setIsActiveDE(false)
+    setObject([])
   }
 
   const changeStartState = event => {
