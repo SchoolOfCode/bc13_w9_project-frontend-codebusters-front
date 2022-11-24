@@ -7,10 +7,10 @@ export function Header (props) {
         <div className="headerDiv">
 
             <div className="headerButtons">
-                <button className="englishButton" onClick={props.handleEnglish}></button>
-                <button className="spanishButton" onClick={props.handleSpanish}></button>
-                <button className="frenchButton" onClick={props.handleFrench}></button>
-                <button className="germanButton" onClick={props.handleGerman}></button>
+                <button className={props.isActive ? "highlightedEN": "englishButton" } onClick={props.handleEnglish}></button>
+                <button className={props.isActiveES ? "highlightedES" : "spanishButton"} onClick={props.handleSpanish}></button>
+                <button className={props.isActiveFR ? "highlightedFR" : "frenchButton"} onClick={props.handleFrench}></button>
+                <button className={props.isActiveDE ? "highlightedDE" : "germanButton"} onClick={props.handleGerman}></button>
             </div>
             <div className="headerDiv">
                 <div className="imageDiv">

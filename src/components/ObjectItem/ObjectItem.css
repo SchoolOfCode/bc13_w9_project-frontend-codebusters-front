@@ -73,3 +73,18 @@ img {
     /* margin: 10px; */
     margin-top: auto;
 }
+
+.highlighted-fave {
+    width: 8em;
+    height: 2em;
+    background-color: var(--darkColor);
+    border: 1px solid var(--darkColor);
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    /* margin: 10px; */
+    margin-top: auto;
+    border-color: white;
+    border-width: 2px;
+}

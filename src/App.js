@@ -30,9 +30,11 @@ function App() {
   const [language, setLanguage] = useState('englishDefinitions')
   // foreign handleChange filterBar
   const [translateSearch, setTranslateSearch] = useState()
- 
 
-
+  const [isActive, setIsActive] = useState(false);
+  const [isActiveES, setIsActiveES] = useState(false);
+  const [isActiveFR, setIsActiveFR] = useState(false);
+  const [isActiveDE, setIsActiveDE] = useState(false);
 
   async function getAllObjects() {
     const allObjects = await fetch(`http://localhost:3001/api/${language}`)
@@ -199,31 +201,47 @@ function App() {
 
     const newArray = [...arrayFile, editFavourite[0]]
     setArrayFile(newArray)
- 
   }
 
   function displayFavourite() {
     setObject(arrayFile)
+    setIsActive(current => !current)
   }
 
   function handleClickSpanish() {
     setLanguage('spanishDefinitions')
     changeStartState()
+    setIsActiveES(current => !current)
+    setIsActive(false)
+    setIsActiveDE(false)
+    setIsActiveFR(false)
   }
 
   function handleClickFrench() {
     setLanguage('frenchDefinitions')
     changeStartState()
+    setIsActiveFR(current => !current)
+    setIsActive(false)
+    setIsActiveDE(false)
+    setIsActiveES(false)
   }
 
   function handleClickGerman() {
     setLanguage('germanDefinitions')
     changeStartState()
+    setIsActiveDE(current => !current)
+    setIsActive(false)
+    setIsActiveFR(false)
+    setIsActiveES(false)
   }
 
   function handleClickEnglish() {
     setLanguage('englishDefinitions')
     changeStartState()
+    setIsActive(current => !current)
+    setIsActiveES(false)
+    setIsActiveFR(false)
+    setIsActiveDE(false)
   }
 
   const changeStartState = event => {
@@ -244,7 +262,7 @@ function App() {
 
       <div className="main-container">
         <div className="languages">
-          <Header handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
+          <Header isActive={isActive} isActiveES={isActiveES} isActiveFR={isActiveFR} isActiveDE={isActiveDE} handleSpanish={handleClickSpanish} handleFrench={handleClickFrench} handleGerman={handleClickGerman} handleEnglish={handleClickEnglish}></Header>
         </div>
 
         <div className="search-bar"> 
