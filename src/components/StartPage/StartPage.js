@@ -10,7 +10,7 @@ export function StartPage (props) {
             {/* <source src={logo} type='video/mp4; codecs="avc1.4d002a, mp4a.40.2"'/>  */}
             {/* <source src="../../logo.mp4" type="video/mp4"/> */}
             <video width="750" height="500" controls >
-      <source src="../../logo.mp4" type="video/mp4"/>
+      <source src="../../../Who are you gonna call.gif" type="gif"/>
 </video>
 
         {/* </video> */}
@@ -19,13 +19,13 @@ export function StartPage (props) {
             <h3 className="chooseYourLanguage">Choose Your Language</h3>
 
             <div className="langButtonDiv">
-                <button className="langButtonEnglish" onClick={props.changeEnglish}>English</button>
+                <button className="langButtonEnglish" onClick={props.changeEnglish}></button>
                 
-                <button className="langButtonSpanish" onClick={props.changeSpanish}>Spanish</button>
+                <button className="langButtonSpanish" onClick={props.changeSpanish}></button>
                 
-                <button className="langButtonFrench" onClick={props.changeFrench}>French</button>
+                <button className="langButtonFrench" onClick={props.changeFrench}></button>
                 
-                <button className="langButtonGerman" onClick={props.changeGerman}>German</button>
+                <button className="langButtonGerman" onClick={props.changeGerman}></button>
             </div>
         </div>
     )
