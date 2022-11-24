@@ -6,10 +6,11 @@ export function StartPage (props) {
     return (
         <div className="start-container">
         <div className="imageDivs">
+
         
       <img src={logos} alt="logo"/>
-
-            </div>
+        
+        </div>
             <h3 className="chooseYourLanguage">Choose Your Language</h3>
 
             <div className="langButtonDiv">
