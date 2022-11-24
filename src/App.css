@@ -41,7 +41,7 @@
   top: 25%;
   left: 25%;
   height: 100%;
-  width: 50vw;
+  width: 50%;
   background-color: var(--darkColor);
   display: flex;
   justify-content: center;
