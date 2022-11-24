@@ -35,6 +35,7 @@ function App() {
   const [isActiveES, setIsActiveES] = useState(false);
   const [isActiveFR, setIsActiveFR] = useState(false);
   const [isActiveDE, setIsActiveDE] = useState(false);
+ 
 
   async function getAllObjects() {
     const allObjects = await fetch(`http://localhost:3001/api/${language}`)
