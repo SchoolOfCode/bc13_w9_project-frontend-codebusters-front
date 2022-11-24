@@ -1,8 +1,9 @@
-const url = 'localhost:3001'
+const url = 'localhost:3000'
 
 
 describe('empty spec', () => {
   it('passes', () => {
+
     cy.visit(url)
   })
 })
