@@ -63,6 +63,11 @@
   margin: 10px;
 }
 
+.addNewButton:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 /* .languages{
   display: flex;
   justify-content: right;
