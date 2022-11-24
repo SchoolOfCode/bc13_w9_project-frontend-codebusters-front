@@ -10,10 +10,10 @@ img {
     width: 80%;
     height: auto;
     border: 3px solid var(--lightColor);
-    background-color: var(--lightColor);
+    background-color: white;
     color: var(--darkColor);
-    margin: 10px;
-    border-radius: 5px;
+    margin: 15px;
+    border-radius: 15px;
 }
 
 .item-text{

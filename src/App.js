@@ -280,7 +280,7 @@ function App() {
       </div>
 
       <div className="main-container">
-        <button className="addNewButton" onClick={handleVisibility}>Add New Object</button>
+        <button className="addNewButton" onClick={handleVisibility}>Add New Resource</button>
         <ObjectList object={object} handleFavourite={favourite} handleDelete={handleDelete} handleEdit={handleObjectState}></ObjectList>
       </div>
 
