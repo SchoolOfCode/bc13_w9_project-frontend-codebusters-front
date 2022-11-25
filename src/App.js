@@ -151,15 +151,13 @@ function App() {
     if (!input) {
       const objects = await getAllObjects()
       const sortedObjects = objects.sort((a, b) =>
-      a.title.localeCompare(b.title));
+      a.title?.localeCompare(b.title));
       setObject(sortedObjects)
     } else {
       const titleObject = await getByTitle()
       setObject(titleObject)
     }
   }
-
-
 
   async function handleTranslation() {
     console.log(translateSearch)
@@ -175,7 +173,6 @@ function App() {
     }
   }
 
-  
   async function getByForeignTitle() {
    
       const titleObject = await fetch(`${url}/api/${language}/english/${translateSearch}`)
@@ -183,7 +180,6 @@ function App() {
       let data = await titleObject.json()
       return data.payload
   }
-
 
   function handleChange(e) {
     setInput(e.target.value)
@@ -255,11 +251,7 @@ function App() {
       setIsStartPageVisible(current => !current);
     }  
   };
-
-
-
   
-
   return (
     <div className="App">
       <div className="start-page" style={{ visibility: isStartPageVisible ? 'visible' : 'hidden' }}>
