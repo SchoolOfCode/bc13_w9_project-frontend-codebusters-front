@@ -165,7 +165,7 @@ function App() {
     if (!translateSearch) {
       const objects = await getAllObjects()
       const sortedObjects = objects.sort((a, b) =>
-      a.title.localeCompare(b.title));
+      a.title?.localeCompare(b.title));
       setObject(sortedObjects)
     }else {
       const titleObject = await getByForeignTitle()
